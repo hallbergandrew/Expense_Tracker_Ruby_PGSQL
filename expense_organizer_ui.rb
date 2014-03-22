@@ -57,7 +57,7 @@ def expense_details
   puts 'Press "UC" to change a cost of an expense'
   puts 'Press "D" to delete an item'
   puts 'Press "DC" to delete a catagory'
-  puts 'Press "PC" to see the percent of money used in a catagory'
+  # puts 'Press "PC" to see the percent of money used in a catagory'
   puts 'Press "M" to go back to main menu'
 
   case gets.chomp.upcase
@@ -72,8 +72,8 @@ def expense_details
     delete_item
   when "DC"
     delete_catagory
-  when "PC"
-    percent_in_each_category
+  # when "PC"
+  #   percent_in_each_category
   when  "M"
     main_menu
   else
