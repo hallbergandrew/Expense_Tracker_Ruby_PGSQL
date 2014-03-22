@@ -1,3 +1,4 @@
+require 'pry'
 class Catagory
 
   attr_reader :catagory, :id
@@ -30,13 +31,21 @@ class Catagory
     self.catagory == another_catagory.catagory
   end
 
-  def get_item  ### IN PROGRESS/currently returning nil
-    results = DB.exec("SELECT items.* FROM catagories JOIN item_catagory on (catagories.id = item_catagory.catagory_id) JOIN items on (items.id = item_catagory.item_id) WHERE catagories.id = #{@id};")
-    results.first
+  def delete
+    DB.exec("DELETE FROM catagories WHERE id = #{@id};")
+  end
+
+  def get_item
+    results = DB.exec("SELECT items.* FROM catagories
+      JOIN item_catagory on (catagories.id = item_catagory.catagory_id)
+      JOIN items on (items.id = item_catagory.item_id)
+      WHERE catagories.id = #{@id};")
+
     found_items = []
     results.each do |result|
       found_items << result['item']
     end
+
     found_items
   end
 end

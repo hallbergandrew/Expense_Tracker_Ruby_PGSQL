@@ -57,6 +57,18 @@ end
     end
   end
 
+  describe '#item_catagory_delete' do
+    it 'deletes an object from the item_category table' do
+      test_item = Item.new({'item' => "apple", 'cost' => 1.50, 'date' => '1986-11-21'})
+      test_item.save
+      test_catagory = Catagory.new({"catagory" => "fast food"})
+      test_catagory.save
+      test_item.item_catagory_save(test_catagory.id)
+      test_item.item_catagory_delete
+      test_item.get_catagory.should eq []
+    end
+  end
+
   describe '#get_catagory' do
     it 'returns the item catagory name from the entry in the join table' do
       test_item = Item.new({'item' => "apple", 'cost' => 1.50, 'date' => '1986-11-21'})
@@ -67,4 +79,5 @@ end
       test_item.get_catagory.should eq [test_catagory.catagory]
     end
   end
+
 end

@@ -41,6 +41,10 @@ class Item
     DB.exec("INSERT INTO item_catagory (catagory_id, item_id) VALUES (#{catagory_id}, #{@id});")
   end
 
+  def item_catagory_delete
+    DB.exec("DELETE FROM item_catagory WHERE item_id = #{@id};")
+  end
+
   def get_catagory
     results = DB.exec("SELECT catagories.* FROM items JOIN item_catagory on (items.id = item_catagory.item_id) JOIN catagories on (catagories.id = item_catagory.catagory_id) WHERE items.id = #{@id};")
       catagories = []
@@ -49,4 +53,9 @@ class Item
     end
     catagories
   end
+
+  def update_item(expense)
+    DB.exec("UPDATE items set cost = #{expense} where id = #{@id}")
+  end
+
 end

@@ -10,3 +10,6 @@ COMPLETED * As a user, I want to choose a single category for each expense, so I
 * As a user, I want to filter my spending reports by time period, so that I can know how my spending habits have changed over time.
 * As a user, I want to set a monthly budget for each category, so that I can create goals for my spending.
 * As a user, I want to see if I've exceeded my budget for each category, each month.
+
+
+Note: We got the interface to delete items and delete that item reference from the join table.
